@@ -4,8 +4,9 @@ import ReactPlayer from "react-player";
 import Suggestionbar from "../../components/Suggestionbar";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import millify from "millify";
-import { format, formatDistance } from 'date-fns'
+import { format,formatDistance } from 'date-fns'
 import Videocomments from "../../components/Videocomments";
+import options from "../../rapidApi/api";
 
 const Post = () => {
   const router = useRouter();
@@ -14,7 +15,8 @@ const Post = () => {
   const [singleVidData, setSingleVidData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/singlevideo")
+    // fetch("/api/singlevideo")
+    fetch(`https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${slug}`, options)
       .then((response) => response.json())
       .then((response) => setSingleVidData(response))
       .catch((err) => console.error(err));
@@ -25,7 +27,7 @@ const Post = () => {
 
   let title = dataSnippet?.title
   let viewCnt = dataStats?.viewCount
-  let releaseDate = dataSnippet?.publishedAt.substring(0, 10)
+  let releaseDate = dataSnippet?.publishedAt?.substring(0, 10)
   let channelTitle = dataSnippet?.channelTitle
   let likeCount = dataStats?.likeCount
   const [desc, setDesc] = useState("")
@@ -52,7 +54,8 @@ const Post = () => {
   }, []);
   // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-
+console.log(releaseDate)
+console.log(typeof releaseDate)
   return (
     <>
       <div className="bg-[#202124] w-screen min-h-screen px-6 lg:px-16 pt-4 flex flex-col lg:flex-row space-x-[2vw] text-white items-center lg:items-start overflow-hidden">
@@ -97,10 +100,10 @@ const Post = () => {
             <p className="whitespace-pre-line">{desc}</p>
             <button className="font-semibold" onClick={expandDesc}>{descClosed && "Show more"}</button>
           </div>
-          {/* <Videocomments /> */}
+          <Videocomments slug={slug} />
         </div>
         {/* <div className=" h-12 bg-black w-[100vw]"></div> */}
-        <Suggestionbar />
+        <Suggestionbar slug={slug}/>
       </div>
     </>
   );

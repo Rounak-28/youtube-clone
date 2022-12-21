@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import options from '../rapidApi/api';
 import Videocard from './Videocard';
 
-const Suggestionbar = () => {
+const Suggestionbar = (props) => {
 
     const [suggData, setSuggData] = useState([])
 
     useEffect(() => {
-        // fetch('https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=8PhdfcX9tG0&part=id%2Csnippet&type=video&maxResults=50', options)
-        fetch("/api/video")
+        fetch(`https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=${props?.slug}&part=id%2Csnippet&type=video&maxResults=50`, options)
+        // fetch("/api/video")
         .then(response => response.json())
         .then(response => setSuggData(response))
         .catch(err => console.error(err));

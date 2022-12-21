@@ -10,8 +10,8 @@ export default function Home() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    // fetch('https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=8PhdfcX9tG0&part=id%2Csnippet&type=video&maxResults=50', options)
-    fetch("/api/video")
+    fetch('https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=7wtfhZwyrcc&part=id%2Csnippet&type=video&maxResults=50', options)
+    // fetch("/api/video")
     .then(response => response.json())
     .then(response => setData(response))
     .catch(err => console.error(err));
