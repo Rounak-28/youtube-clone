@@ -55,9 +55,9 @@ const Post = () => {
 
   return (
     <>
-      <div className="bg-[#202124] w-screen min-h-screen px-16 pt-4 flex space-x-[2vw] text-white">
+      <div className="bg-[#202124] w-screen min-h-screen px-6 lg:px-16 pt-4 flex flex-col lg:flex-row space-x-[2vw] text-white items-center lg:items-start overflow-hidden">
         <div className="main space-y-3">
-          <div className="player bg-black w-[62vw] h-[70vh]">
+          <div className="player bg-black w-full h-[27vh] lg:w-[62vw] md:h-[40vh] lg:h-[70vh]">
             {hasWindow && (
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${slug}`}
@@ -69,7 +69,7 @@ const Post = () => {
           <div className="title text-xl my-2">
             {title}
           </div>
-          <div className="channel h-14 my-2 flex items-center justify-between">
+          <div className="channel lg:h-14 my-2 flex space-y-2 lg:space-y-0 lg:items-center justify-between max-w-[400px] lg:max-w-none overflow-hidden flex-col lg:flex-row w-[100vw] lg:w-full px-2 lg:px-0">
             <div className="left flex items-center space-x-4 text-lg">
               <div className="logo w-10 h-10 rounded-full bg-white"></div>
               <div>{channelTitle}</div>
@@ -89,7 +89,7 @@ const Post = () => {
               </div>
             </div>
           </div>
-          <div className={`description min-h-[96px] rounded space-y-3 bg-[#3c3b3b] ${descClosed && "hover:bg-[#5c5b5b]"}`}>
+          <div className={`description min-h-[96px] px-2 rounded space-y-3 bg-[#3c3b3b] ${descClosed && "hover:bg-[#5c5b5b]"}`}>
             <div className="flex space-x-2">
               <p>{millify(viewCnt)} views</p>
               <p>{singleVidData?.items && formatDistance(new Date(releaseDate), new Date())} ago</p>
@@ -97,8 +97,9 @@ const Post = () => {
             <p className="whitespace-pre-line">{desc}</p>
             <button className="font-semibold" onClick={expandDesc}>{descClosed && "Show more"}</button>
           </div>
-          <Videocomments />
+          {/* <Videocomments /> */}
         </div>
+        {/* <div className=" h-12 bg-black w-[100vw]"></div> */}
         <Suggestionbar />
       </div>
     </>

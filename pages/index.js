@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <>
       <Sidebar />
-      <div className="main lg:pl-52 xl:pl-64 min-h-[90vh] md:min-h-screen bg-[#202124] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-8 md:gap-y-6 md:gap-x-0 overflow-y-scroll">
+      <div className="main lg:pl-52 xl:pl-64 min-h-[90vh] lg:min-h-screen bg-[#202124] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-y-6 lg:gap-x-0 overflow-y-scroll">
         {data?.items?.map(item => (
           <Videocard {...item} key={item.id.videoId} />
         ))}

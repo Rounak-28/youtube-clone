@@ -16,7 +16,7 @@ const Suggestionbar = () => {
       }, [])
 
   return (
-    <div className="w-[26vw] min-h-screen flex flex-col items-center">
+    <div className="w-full mt-5 lg:mt-0 lg:w-[26vw] min-h-screen flex flex-col items-center">
         {suggData?.items?.map(item =>(
             <Videocard {...item} key={item.id.videoId}/>
         ))}
