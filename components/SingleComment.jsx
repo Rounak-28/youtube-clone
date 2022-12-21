@@ -11,7 +11,7 @@ const SingleComment = (props) => {
                 <span>3 weeks ago</span>
             </div>
             <div className="m">
-                <p>{props?.snippet?.topLevelComment?.snippet?.textDisplay}</p>
+                <p>{props?.snippet?.topLevelComment?.snippet?.textOriginal}</p>
             </div>
             <div className="likes flex text-2xl">
                 <AiOutlineLike />
